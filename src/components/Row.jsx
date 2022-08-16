@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import Movie from "./Movie";
 
-const Row = ({ title, fetchURL }) => {
+const Row = ({ title, fetchURL, rowID }) => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
@@ -17,10 +17,10 @@ const Row = ({ title, fetchURL }) => {
   return (
     <>
       <h2 className="text-white font-bold md:text-xl p-4">{title}</h2>
-      <div className="relative flex items-center">
+      <div className="relative flex items-center group">
         <div
-          className="w-full h-full overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide"
-          id={"slider"}
+          id={"slider" + rowID}
+          className="overflow-x-scroll whitespace-nowrap scrollbar-hide"
         >
           {movies.map((item, id) => (
             <Movie key={id} item={item} />
